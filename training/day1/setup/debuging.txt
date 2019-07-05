@@ -1,0 +1,9 @@
+
+https://github.com/go-delve/delve
+
+mac:
+xcode-select --install
+
+Now you can install delve using go get:
+
+$ go get -u github.com/go-delve/delve/cmd/dlv
