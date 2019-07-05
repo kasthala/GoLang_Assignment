@@ -1,0 +1,8 @@
+installing go:
+https://golang.org/doc/install
+
+installing git:
+https://git-scm.com/downloads
+
+installing IDE:
+vs-code: https://code.visualstudio.com/download
