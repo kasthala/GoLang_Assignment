@@ -6,3 +6,7 @@ https://git-scm.com/downloads
 
 installing IDE:
 vs-code: https://code.visualstudio.com/download
+            extension: 
+            1. go
+            2. Git Automator
+            3. Git Extensions for VS Code
