@@ -10,3 +10,95 @@ vs-code: https://code.visualstudio.com/download
             1. go
             2. Git Automator
             3. Git Extensions for VS Code
+
+installing nginx:
+    1. Install Homebrew and Homebrew Cask
+        a. xcode-select --install
+        b. ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        c. brew doctor
+    2. brew install nginx
+    3. After install run:
+            sudo nginx
+        Testing Open Navigator it by going to URL:
+            http://localhost:8080
+    4. Configuration
+        The default place of nginx.conf on Mac after installing with brew is:
+            /usr/local/etc/nginx/nginx.conf
+        Changing the default port (8080). We shall change it to 80. 
+    5. First stop the nginx server if it is running by: 
+            sudo nginx -s stop
+    6. Then open nginx.conf with (example vim):
+            vim /usr/local/etc/nginx/nginx.conf
+            and change the:
+
+ server {
+listen       8080;
+server_name  localhost;
+
+#access_log  logs/host.access.log  main;
+
+location / {
+    root   html;
+    index  index.html index.htm;
+}
+to:
+
+server {
+listen       80;
+server_name  localhost;
+
+#access_log  logs/host.access.log  main;
+
+location / {
+    root   html;
+    index  index.html index.htm;
+}
+Save configuration and relaunch nginx
+
+sudo nginx
+Testing
+
+Open Navigator it by going to URL:
+
+http://localhost
+Update: thanks @pablohenrique 
+* ERROR 403 Forbidden - *
+dont worry, some other application is already using port 80. probably be skype.
+
+1 Solution 1: Change Skype port in Skype > Preferences > advanced
+2 Solution 2: No change server { listen to 80.
+
+That means that nginx will use port 8080 instead of 80. To access it I would use this url
+http://localhost:8080.
+
+Changing the path of defualt web location
+
+he nginx html folder (brew install only) is by the defult in:
+
+/usr/local/Cellar/nginx/1.2.3/html
+Note: change ** 1.2.3 ** to your nginx version.
+
+The defualt path configuration:
+
+server {
+listen       80;
+server_name  localhost;
+
+#access_log  logs/host.access.log  main;
+
+location / {
+    root   html;
+    index  index.html index.htm;
+}
+To let say Users/to/www:
+
+ server {
+listen       80;
+server_name  localhost;
+
+#access_log  logs/host.access.log  main;
+
+location / {
+    root   /Users/to/www;
+    index  index.html index.htm;
+}

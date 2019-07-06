@@ -1,0 +1,3 @@
+go get - to install packages
+go build - build the code
+go install - build and execute the code
